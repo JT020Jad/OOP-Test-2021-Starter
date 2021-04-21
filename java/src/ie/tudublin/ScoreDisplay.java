@@ -8,7 +8,9 @@ import processing.core.PApplet;
 
 public class ScoreDisplay extends PApplet
 {
-	ArrayList<Note> notes = new ArrayList<Note>();
+	ArrayList<String> notes = new ArrayList<String>();
+	// was unable to get it working as <Note> so I set it to string
+
 	String score = "DEFGABcd";
 	//String score = "D2E2F2G2A2B2c2d2";
 	//String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
@@ -25,20 +27,39 @@ public class ScoreDisplay extends PApplet
 		for(int i = 0; i < parsedScore.length; i++)
 		{
 			System.out.println(parsedScore[i]);
-
-			for(int j = 0; j < parsedScore.length; j++)
-			{
-				
-			}
 		}
 
-		//Collections.addAll(notes, parsedScore);
+		// Adding from array to arrayList
+		Collections.addAll(notes, parsedScore);
 	}
 
 
 	void drawNotes()
 	{
-		int letterYposition = 58;	
+		int letterYposition = 58;
+		int initialLetterX = 75;
+		float border = 42f;	
+		char noteLetters[] = {'D', 'E', 'F', 'G', 'A', 'B', 'c', 'd'};
+
+
+		for(int i = 1; i < notes.size() + 1; i++)
+		{
+            
+			line(border * i * 2 + 20, height - border * i, border * i * 2 + 20, height - border * i - 200);
+            circle(border * i * 2, height - border * i, 45);
+		}
+
+		for(int i = 0 ; i < 8; i++)
+		{
+			// unable to copy from parsedScore to new char array for letters
+
+
+			text(noteLetters[i], initialLetterX, letterYposition);
+			initialLetterX = initialLetterX + 80;
+		}
+        
+
+		/* Old implementation of hard coded lines
 
 		// D note
 		text("D", 75, letterYposition);
@@ -62,11 +83,17 @@ public class ScoreDisplay extends PApplet
 		line(215, 190, 215, 360);
 		circle(195, 360, 40);
 
+
 		// G note
 		text("G", 270, letterYposition);
 
 		line(280, 150, 280, 310);
 		circle(262, 300, 40);
+
+
+		// A note
+		text("A", 340, letterYposition);
+		*/
 	}
 
 	void drawStaves()
@@ -86,7 +113,7 @@ public class ScoreDisplay extends PApplet
 		} 
 
 
-		/* Old implementation of the staves
+		/* Old implementation of the hard coded staves
 
 		// Stave 1
 		line(50, 120, 950, 120);
