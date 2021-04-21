@@ -38,13 +38,35 @@ public class ScoreDisplay extends PApplet
 
 	void drawNotes()
 	{
+		int letterYposition = 58;	
+
 		// D note
-		line(85, 260, 100, 280);
+		text("D", 75, letterYposition);
+
 		line(85, 260, 85, 420);
-		fill(0);
+		//line(85, 260, 115, 290);
 		circle(65, 420, 40);
 
 
+		// E note
+		text("E", 140, letterYposition);
+
+		line(150, 235, 150, 390);
+		//line(150, 235, 165, 260);
+		circle(131, 390, 40);
+
+
+		// F note
+		text("F", 205, letterYposition);
+
+		line(215, 190, 215, 360);
+		circle(195, 360, 40);
+
+		// G note
+		text("G", 270, letterYposition);
+
+		line(280, 150, 280, 310);
+		circle(262, 300, 40);
 	}
 
 	void drawStaves()
@@ -103,8 +125,10 @@ public class ScoreDisplay extends PApplet
 	public void draw()
 	{
 		background(255);
+		textSize(45);
 		stroke(0);
 		strokeWeight(3);
+		fill(0);
 
 		drawStaves();
 		drawNotes();
